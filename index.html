@@ -1,0 +1,235 @@
+```html id="gbyu7t"
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rishi Tour and Travels</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+min-height:100vh;
+}
+
+.logo{
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:#0b5394;
+}
+
+.desc{
+text-align:center;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:20px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
+background:white;
+padding:20px;
+width:90%;
+max-width:400px;
+border-radius:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+Rishi Tour and Travels
+</div>
+
+<p class="desc">
+Safe • Comfortable • Reliable Travel Service
+</p>
+
+<input type="text" id="name" placeholder="Customer Name">
+
+<input type="tel" id="mobile" placeholder="Mobile Number">
+
+<select id="service">
+<option>Select Service</option>
+<option>One Way Drop Pickup</option>
+<option>Same Day Return</option>
+<option>Airport Transfer</option>
+<option>Outstation Trip</option>
+<option>Local Service</option>
+<option>Short Order</option>
+<option>Wedding Order</option>
+</select>
+
+<input type="text" id="pickup" placeholder="Pickup Location">
+
+<input type="text" id="drop" placeholder="Drop Location">
+
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+<select id="vehicleModel">
+<option>Select Vehicle Model</option>
+<option>Desire</option>
+<option>Ertiga</option>
+<option>Innova</option>
+<option>Cryta</option>
+</select>
+
+<select id="vehicleType">
+<option>Select Vehicle Type</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>Hatchback</option>
+</select>
+
+<button onclick="openPopup()">
+WhatsApp Booking
+</button>
+
+</div>
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<h2>Booking Confirmation</h2>
+
+<input type="text" id="c_name">
+<input type="text" id="c_mobile">
+<input type="text" id="c_service">
+<input type="text" id="c_pickup">
+<input type="text" id="c_drop">
+<input type="text" id="c_date">
+<input type="text" id="c_time">
+<input type="text" id="c_model">
+<input type="text" id="c_type">
+
+<button onclick="sendWhatsApp()">
+Submit & Open WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function openPopup(){
+
+document.getElementById('popup').style.display='flex';
+
+document.getElementById('c_name').value =
+document.getElementById('name').value;
+
+document.getElementById('c_mobile').value =
+document.getElementById('mobile').value;
+
+document.getElementById('c_service').value =
+document.getElementById('service').value;
+
+document.getElementById('c_pickup').value =
+document.getElementById('pickup').value;
+
+document.getElementById('c_drop').value =
+document.getElementById('drop').value;
+
+document.getElementById('c_date').value =
+document.getElementById('date').value;
+
+document.getElementById('c_time').value =
+document.getElementById('time').value;
+
+document.getElementById('c_model').value =
+document.getElementById('vehicleModel').value;
+
+document.getElementById('c_type').value =
+document.getElementById('vehicleType').value;
+
+}
+
+function sendWhatsApp(){
+
+let name=document.getElementById('c_name').value;
+let mobile=document.getElementById('c_mobile').value;
+let service=document.getElementById('c_service').value;
+let pickup=document.getElementById('c_pickup').value;
+let drop=document.getElementById('c_drop').value;
+let date=document.getElementById('c_date').value;
+let time=document.getElementById('c_time').value;
+let model=document.getElementById('c_model').value;
+let type=document.getElementById('c_type').value;
+
+let message =
+`Rishi Tour and Travels Booking Confirmation
+
+Name: ${name}
+Mobile: ${mobile}
+Service: ${service}
+Pickup: ${pickup}
+Drop: ${drop}
+Date: ${date}
+Time: ${time}
+Vehicle Model: ${model}
+Vehicle Type: ${type}
+
+Thank You For Booking With Us`;
+
+let url =
+`https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
+
+window.open(url,'_blank');
+
+}
+
+</script>
+
+</body>
+</html>
+```
