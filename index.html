@@ -1,463 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- WELCOME SCREEN -->
 
-<title>Rishi Tour and Travels</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#eef3ff;
-min-height:100vh;
-}
-
-.container{
-max-width:500px;
-margin:auto;
-padding:20px;
-}
-
-.top{
-background:linear-gradient(135deg,#003566,#00509d);
-padding:30px 20px;
-border-radius:0 0 35px 35px;
-color:white;
-position:relative;
-box-shadow:0 8px 25px rgba(0,0,0,0.2);
-}
-
-.logo{
-font-size:34px;
-font-weight:700;
-text-align:center;
-line-height:42px;
-}
-
-.subtitle{
-text-align:center;
-margin-top:10px;
-font-size:14px;
-opacity:0.9;
-}
-
-.admin-btn{
-position:absolute;
-top:20px;
-right:20px;
-background:white;
-color:#003566;
-border:none;
-padding:10px 16px;
-border-radius:15px;
-font-weight:600;
-cursor:pointer;
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
-
-.chips{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-justify-content:center;
-margin-top:22px;
-}
-
-.chip{
-background:rgba(255,255,255,0.18);
-backdrop-filter:blur(10px);
-padding:10px 14px;
-border-radius:50px;
-font-size:12px;
-font-weight:500;
-border:1px solid rgba(255,255,255,0.2);
-}
-
-.form-card{
-background:white;
-margin-top:-20px;
-padding:22px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.title{
-font-size:28px;
-font-weight:700;
-text-align:center;
-margin-bottom:25px;
-color:#003566;
-}
-
-.input-box{
-margin-bottom:18px;
-}
-
-input,select{
-width:100%;
-padding:16px;
-border:none;
-border-radius:18px;
-background:#f3f6ff;
-font-size:15px;
-outline:none;
-transition:0.3s;
-}
-
-input:focus,select:focus{
-background:white;
-border:2px solid #00509d;
-box-shadow:0 0 10px rgba(0,80,157,0.2);
-}
-
-.suggestion{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:10px;
-}
-
-.suggestion span{
-background:#edf2ff;
-padding:10px 14px;
-border-radius:50px;
-font-size:13px;
-cursor:pointer;
-font-weight:500;
-}
-
-.whatsapp-btn{
-width:100%;
-padding:18px;
-background:linear-gradient(135deg,#00b712,#009d0f);
-color:white;
-border:none;
-border-radius:18px;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-margin-top:10px;
-box-shadow:0 8px 20px rgba(0,183,18,0.3);
-}
-
-.bottom{
-margin-top:25px;
-text-align:center;
-padding:20px;
-color:#444;
-font-size:14px;
-}
-
-.popup{
+<div id="welcomeScreen" style="
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
+background:linear-gradient(135deg,#001d3d,#003566,#00509d);
+z-index:9999;
+display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:20px;
-z-index:1000;
-}
+overflow:hidden;
+transition:0.5s;
+">
 
-.popup-box{
-background:white;
-width:100%;
-max-width:420px;
-padding:22px;
-border-radius:25px;
-max-height:90vh;
-overflow:auto;
-animation:pop 0.3s ease;
-}
-
-@keyframes pop{
-from{
-transform:scale(0.8);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-
-.popup-title{
-font-size:24px;
+<div style="
+font-size:38px;
 font-weight:700;
-margin-bottom:20px;
-text-align:center;
-color:#003566;
-}
-
-.review{
-background:#f3f6ff;
-padding:14px;
-border-radius:16px;
-margin-bottom:12px;
-font-size:14px;
-line-height:24px;
-}
-
-.popup-buttons{
-display:flex;
-gap:10px;
-margin-top:20px;
-}
-
-.edit-btn{
-flex:1;
-padding:14px;
-border:none;
-border-radius:15px;
-background:#dbe7ff;
-font-weight:600;
-cursor:pointer;
-}
-
-.submit-btn{
-flex:1;
-padding:14px;
-border:none;
-border-radius:15px;
-background:#00b712;
 color:white;
-font-weight:700;
-cursor:pointer;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="top">
-
-<button class="admin-btn" onclick="adminLogin()">Admin</button>
-
-<div class="logo">
-Rishi Tour and Travels
+text-align:center;
+line-height:55px;
+padding:20px;
+">
+Welcome To <br>
+Rishi Tour & Travels
 </div>
 
-<div class="subtitle">
+<div style="
+margin-top:20px;
+background:rgba(255,255,255,0.15);
+padding:14px 22px;
+border-radius:50px;
+color:white;
+font-size:16px;
+backdrop-filter:blur(10px);
+">
 Premium Cab Booking Service
 </div>
 
-<div class="chips">
-<div class="chip">24/7 Service</div>
-<div class="chip">Professional Drivers</div>
-<div class="chip">New Cars</div>
-<div class="chip">Affordable Fare</div>
+<div style="
+position:absolute;
+bottom:60px;
+display:flex;
+flex-direction:column;
+align-items:center;
+color:white;
+font-size:14px;
+animation:slideAnim 1.2s infinite;
+">
+
+<div style="
+font-size:18px;
+margin-bottom:8px;
+">
+👉 Swipe Right To Continue
 </div>
 
-</div>
-
-<div class="container">
-
-<div class="form-card">
-
-<div class="title">
-Customer Booking
-</div>
-
-<div class="input-box">
-<input type="text" id="name" placeholder="Customer Name">
-</div>
-
-<div class="input-box">
-<input type="number" id="mobile" placeholder="Mobile Number">
-</div>
-
-<div class="input-box">
-<input type="text" id="address" placeholder="Address">
-</div>
-
-<div class="input-box">
-<select id="service">
-<option>Select Service</option>
-<option>One Way Drop Pickup</option>
-<option>Same Day Return</option>
-<option>Airport Transfer</option>
-<option>Outstation Trip</option>
-<option>Local Service</option>
-<option>Short Order</option>
-<option>Wedding Order</option>
-</select>
-</div>
-
-<div class="input-box">
-<input type="text" id="pickup" placeholder="Pickup Location">
-</div>
-
-<div class="input-box">
-<input type="text" id="drop" placeholder="Drop Location">
-</div>
-
-<div class="suggestion">
-<span onclick="setDrop('Kolkata Airport')">Kolkata Airport</span>
-<span onclick="setDrop('Ranchi Airport')">Ranchi Airport</span>
-<span onclick="setDrop('Tata Station')">Tata Station</span>
-</div>
-
-<div class="input-box">
-<input type="date" id="date">
-</div>
-
-<div class="input-box">
-<input type="time" id="time">
-</div>
-
-<div class="input-box">
-<select id="vehicle">
-<option>Select Vehicle</option>
-<option>Swift Dzire</option>
-<option>Ertiga</option>
-<option>Innova</option>
-<option>Creta</option>
-</select>
-</div>
-
-<button class="whatsapp-btn" onclick="openPopup()">
-Send WhatsApp Booking
-</button>
-
-<div class="bottom">
-
-<b>Contact Us:</b> 8651568297
-<br><br>
-
-<b>Address:</b> Sakchi Jamshedpur
+<div style="
+width:80px;
+height:4px;
+background:white;
+border-radius:10px;
+"></div>
 
 </div>
 
 </div>
 
-</div>
+<style>
 
-<div class="popup" id="popup">
+@keyframes slideAnim{
+0%{
+transform:translateX(0px);
+}
+50%{
+transform:translateX(20px);
+}
+100%{
+transform:translateX(0px);
+}
+}
 
-<div class="popup-box">
-
-<div class="popup-title">
-Booking Review
-</div>
-
-<div class="review" id="reviewData"></div>
-
-<div class="popup-buttons">
-
-<button class="edit-btn" onclick="closePopup()">
-Edit
-</button>
-
-<button class="submit-btn" onclick="sendWhatsApp()">
-Submit
-</button>
-
-</div>
-
-</div>
-
-</div>
+</style>
 
 <script>
 
-function setDrop(place){
-document.getElementById("drop").value=place;
-}
+let startX = 0;
 
-function openPopup(){
+document.getElementById("welcomeScreen")
+.addEventListener("touchstart",function(e){
 
-let data=`
+startX = e.touches[0].clientX;
 
-<b>Name:</b> ${document.getElementById("name").value}<br><br>
+});
 
-<b>Mobile:</b> ${document.getElementById("mobile").value}<br><br>
+document.getElementById("welcomeScreen")
+.addEventListener("touchend",function(e){
 
-<b>Address:</b> ${document.getElementById("address").value}<br><br>
+let endX = e.changedTouches[0].clientX;
 
-<b>Service:</b> ${document.getElementById("service").value}<br><br>
+if(endX - startX > 120){
 
-<b>Pickup:</b> ${document.getElementById("pickup").value}<br><br>
+document.getElementById("welcomeScreen")
+.style.transform = "translateX(100%)";
 
-<b>Drop:</b> ${document.getElementById("drop").value}<br><br>
+setTimeout(()=>{
 
-<b>Date:</b> ${document.getElementById("date").value}<br><br>
+document.getElementById("welcomeScreen")
+.style.display="none";
 
-<b>Time:</b> ${document.getElementById("time").value}<br><br>
-
-<b>Vehicle:</b> ${document.getElementById("vehicle").value}
-
-`;
-
-document.getElementById("reviewData").innerHTML=data;
-
-document.getElementById("popup").style.display="flex";
+},500);
 
 }
 
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
-
-function sendWhatsApp(){
-
-let message = `🚖 *Rishi Tour and Travels Booking*
-
-Name: ${document.getElementById("name").value}
-
-Mobile: ${document.getElementById("mobile").value}
-
-Address: ${document.getElementById("address").value}
-
-Service: ${document.getElementById("service").value}
-
-Pickup: ${document.getElementById("pickup").value}
-
-Drop: ${document.getElementById("drop").value}
-
-Date: ${document.getElementById("date").value}
-
-Time: ${document.getElementById("time").value}
-
-Vehicle: ${document.getElementById("vehicle").value}`;
-
-let url = `https://wa.me/918651568297?text=${encodeURIComponent(message)}`;
-
-window.open(url,'_blank');
-
-}
-
-function adminLogin(){
-
-let password = prompt("Enter Admin Password");
-
-if(password=="5007"){
-
-window.location.href="admin/index.html";
-
-}else{
-
-alert("Wrong Password");
-
-}
-
-}
+});
 
 </script>
-
-</body>
-</html>
