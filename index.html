@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Rishi Tour and Travels</title>
 
 <style>
@@ -146,7 +148,8 @@ color:#555;
 
 <div class="container">
 
-<div class="admin-btn" onclick="adminLogin()">
+<div class="admin-btn"
+onclick="adminLogin()">
 Admin Login
 </div>
 
@@ -158,50 +161,104 @@ Rishi Tour and Travels
 <div class="chip">24/7 365 Days Service</div>
 <div class="chip">Professional Drivers</div>
 <div class="chip">Well Maintained Cars</div>
-<div class="chip">Reliable Fair Charge</div>
+<div class="chip">Affordable Fair Charge</div>
 </div>
 
 <div class="title">
 Customer Booking Form
 </div>
 
-<input type="text" id="name" placeholder="Customer Name">
+<input type="text"
+id="name"
+placeholder="Customer Name">
 
-<input type="tel" id="mobile" placeholder="Mobile Number" onkeyup="loadCustomerData()">
+<input type="tel"
+id="mobile"
+placeholder="Mobile Number"
+onkeyup="loadCustomerData()">
 
-<input type="text" id="address" placeholder="Address">
+<input type="text"
+id="address"
+placeholder="Address">
 
 <select id="service">
+
 <option>Select Service</option>
+
 <option>One Way Drop Pickup</option>
+
 <option>Same Day Return</option>
+
 <option>Airport Transfer</option>
+
 <option>Outstation Trip</option>
+
 <option>Local Service</option>
+
 <option>Short Order</option>
+
 <option>Wedding Order</option>
+
 </select>
 
-<input type="text" id="pickup" placeholder="Pickup Location">
+<input type="text"
+id="pickup"
+placeholder="Pickup Location">
 
-<input type="text" id="drop" placeholder="Drop Location">
+<input type="text"
+id="drop"
+placeholder="Drop Location">
 
-<div class="suggestions" id="suggestions"></div>
+<div class="suggestions"
+id="suggestions">
+</div>
 
-<input type="date" id="date">
+<input type="date"
+id="date">
 
-<input type="time" id="time">
+<input type="time"
+id="time">
 
-<select id="vehicle">
-<option>Select Vehicle</option>
+<select id="vehicleModel">
+
+<option>Select Vehicle Model</option>
+
 <option>Desire</option>
+
 <option>Ertiga</option>
+
 <option>Innova</option>
+
 <option>Creta</option>
+
 </select>
+
+<select id="vehicleType">
+
+<option>Select Vehicle Type</option>
+
+<option>Sedan</option>
+
+<option>SUV</option>
+
+<option>Hatchback</option>
+
+</select>
+
+<input type="text"
+id="vehicleNo"
+placeholder="Vehicle Number">
+
+<input type="text"
+id="driverName"
+placeholder="Driver Name">
+
+<input type="tel"
+id="driverMobile"
+placeholder="Driver Mobile">
 
 <button onclick="openPopup()">
-Send WhatsApp
+WhatsApp Booking
 </button>
 
 <div class="footer">
@@ -216,29 +273,26 @@ Sakchi, Jamshedpur
 
 </div>
 
-<div class="popup" id="popup">
+<div class="popup"
+id="popup">
 
 <div class="popup-content">
 
 <h2>Review Booking</h2>
 
 <input type="text" id="r_name">
-
 <input type="text" id="r_mobile">
-
 <input type="text" id="r_address">
-
 <input type="text" id="r_service">
-
 <input type="text" id="r_pickup">
-
 <input type="text" id="r_drop">
-
 <input type="text" id="r_date">
-
 <input type="text" id="r_time">
-
-<input type="text" id="r_vehicle">
+<input type="text" id="r_vehicleModel">
+<input type="text" id="r_vehicleType">
+<input type="text" id="r_vehicleNo">
+<input type="text" id="r_driverName">
+<input type="text" id="r_driverMobile">
 
 <button onclick="sendWhatsApp()">
 Submit Booking
@@ -250,21 +304,27 @@ Submit Booking
 
 <script>
 
-let savedDrops = JSON.parse(localStorage.getItem("dropSuggestions")) || [];
+let savedDrops =
+JSON.parse(
+localStorage.getItem("dropSuggestions")
+) || [];
 
 function showSuggestions(){
 
-let box = document.getElementById("suggestions");
+let box =
+document.getElementById("suggestions");
 
 box.innerHTML = "";
 
 savedDrops.forEach(place=>{
 
 box.innerHTML +=
-`<div class="suggestion-chip"
+`
+<div class="suggestion-chip"
 onclick="selectDrop('${place}')">
 ${place}
-</div>`;
+</div>
+`;
 
 });
 
@@ -273,7 +333,10 @@ ${place}
 showSuggestions();
 
 function selectDrop(place){
-document.getElementById("drop").value = place;
+
+document.getElementById("drop").value =
+place;
+
 }
 
 function loadCustomerData(){
@@ -282,7 +345,9 @@ let mobile =
 document.getElementById("mobile").value;
 
 let data =
-JSON.parse(localStorage.getItem(mobile));
+JSON.parse(
+localStorage.getItem(mobile)
+);
 
 if(data){
 
@@ -298,7 +363,8 @@ data.address;
 
 function openPopup(){
 
-document.getElementById("popup").style.display="flex";
+document.getElementById("popup")
+.style.display="flex";
 
 document.getElementById("r_name").value =
 document.getElementById("name").value;
@@ -324,8 +390,20 @@ document.getElementById("date").value;
 document.getElementById("r_time").value =
 document.getElementById("time").value;
 
-document.getElementById("r_vehicle").value =
-document.getElementById("vehicle").value;
+document.getElementById("r_vehicleModel").value =
+document.getElementById("vehicleModel").value;
+
+document.getElementById("r_vehicleType").value =
+document.getElementById("vehicleType").value;
+
+document.getElementById("r_vehicleNo").value =
+document.getElementById("vehicleNo").value;
+
+document.getElementById("r_driverName").value =
+document.getElementById("driverName").value;
+
+document.getElementById("r_driverMobile").value =
+document.getElementById("driverMobile").value;
 
 }
 
@@ -340,53 +418,68 @@ document.getElementById("r_mobile").value;
 let address =
 document.getElementById("r_address").value;
 
-let service =
-document.getElementById("r_service").value;
-
-let pickup =
-document.getElementById("r_pickup").value;
-
 let drop =
 document.getElementById("r_drop").value;
 
-let date =
-document.getElementById("r_date").value;
-
-let time =
-document.getElementById("r_time").value;
-
-let vehicle =
-document.getElementById("r_vehicle").value;
-
-localStorage.setItem(mobile,
+localStorage.setItem(
+mobile,
 JSON.stringify({
 name:name,
 address:address
-}));
+})
+);
 
 if(!savedDrops.includes(drop)){
+
 savedDrops.push(drop);
+
 localStorage.setItem(
 "dropSuggestions",
 JSON.stringify(savedDrops)
 );
+
 }
 
 let message =
-`New Booking Request
+`Booking Confirmation
 
 Name: ${name}
 Mobile: ${mobile}
 Address: ${address}
-Service: ${service}
-Pickup: ${pickup}
-Drop: ${drop}
-Date: ${date}
-Time: ${time}
-Vehicle: ${vehicle}`;
+
+Service: ${document.getElementById("r_service").value}
+
+Pickup:
+${document.getElementById("r_pickup").value}
+
+Drop:
+${document.getElementById("r_drop").value}
+
+Date:
+${document.getElementById("r_date").value}
+
+Time:
+${document.getElementById("r_time").value}
+
+Vehicle Model:
+${document.getElementById("r_vehicleModel").value}
+
+Vehicle Type:
+${document.getElementById("r_vehicleType").value}
+
+Vehicle No:
+${document.getElementById("r_vehicleNo").value}
+
+Driver Name:
+${document.getElementById("r_driverName").value}
+
+Driver Mobile:
+${document.getElementById("r_driverMobile").value}
+
+Thank You For Booking With Us`;
 
 let url =
-`https://wa.me/918651568297?text=${encodeURIComponent(message)}`;
+`https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
 
 window.open(url,'_blank');
 
@@ -414,3 +507,4 @@ alert("Wrong Password");
 </body>
 </html>
 ```
+
