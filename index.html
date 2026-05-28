@@ -1,44 +1,79 @@
-```html id="gbyu7t"
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rishi Tour and Travels</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
-font-family:Arial;
-background:#f4f4f4;
 margin:0;
 padding:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
 }
 
 .container{
 max-width:500px;
 margin:auto;
 background:white;
-padding:20px;
 min-height:100vh;
+padding:20px;
+box-sizing:border-box;
+position:relative;
+}
+
+.admin-btn{
+position:absolute;
+top:15px;
+right:15px;
+background:#0a4d8c;
+color:white;
+padding:10px 14px;
+border-radius:10px;
+font-size:14px;
+cursor:pointer;
 }
 
 .logo{
 text-align:center;
 font-size:30px;
 font-weight:bold;
-color:#0b5394;
+color:#0a4d8c;
+margin-top:20px;
 }
 
-.desc{
+.chips{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+justify-content:center;
+margin:20px 0;
+}
+
+.chip{
+background:#e8f0fe;
+padding:8px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+color:#0a4d8c;
+}
+
+.title{
 text-align:center;
-margin-bottom:20px;
+font-size:22px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
 input,select{
 width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:10px;
+padding:14px;
+margin-top:12px;
+border-radius:12px;
 border:1px solid #ccc;
 font-size:16px;
 box-sizing:border-box;
@@ -46,14 +81,30 @@ box-sizing:border-box;
 
 button{
 width:100%;
-padding:14px;
+padding:15px;
 margin-top:20px;
+border:none;
+border-radius:12px;
 background:#25D366;
 color:white;
-border:none;
-border-radius:10px;
 font-size:18px;
 font-weight:bold;
+cursor:pointer;
+}
+
+.suggestions{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+}
+
+.suggestion-chip{
+background:#f1f1f1;
+padding:8px 12px;
+border-radius:20px;
+font-size:13px;
+cursor:pointer;
 }
 
 .popup{
@@ -63,17 +114,29 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.6);
 justify-content:center;
 align-items:center;
+padding:10px;
+box-sizing:border-box;
+z-index:1000;
 }
 
 .popup-content{
 background:white;
 padding:20px;
-width:90%;
-max-width:400px;
 border-radius:15px;
+width:100%;
+max-width:400px;
+max-height:90vh;
+overflow:auto;
+}
+
+.footer{
+margin-top:30px;
+text-align:center;
+line-height:1.8;
+color:#555;
 }
 
 </style>
@@ -83,17 +146,30 @@ border-radius:15px;
 
 <div class="container">
 
+<div class="admin-btn" onclick="adminLogin()">
+Admin Login
+</div>
+
 <div class="logo">
 Rishi Tour and Travels
 </div>
 
-<p class="desc">
-Safe • Comfortable • Reliable Travel Service
-</p>
+<div class="chips">
+<div class="chip">24/7 365 Days Service</div>
+<div class="chip">Professional Drivers</div>
+<div class="chip">Well Maintained Cars</div>
+<div class="chip">Reliable Fair Charge</div>
+</div>
+
+<div class="title">
+Customer Booking Form
+</div>
 
 <input type="text" id="name" placeholder="Customer Name">
 
-<input type="tel" id="mobile" placeholder="Mobile Number">
+<input type="tel" id="mobile" placeholder="Mobile Number" onkeyup="loadCustomerData()">
+
+<input type="text" id="address" placeholder="Address">
 
 <select id="service">
 <option>Select Service</option>
@@ -110,28 +186,33 @@ Safe • Comfortable • Reliable Travel Service
 
 <input type="text" id="drop" placeholder="Drop Location">
 
+<div class="suggestions" id="suggestions"></div>
+
 <input type="date" id="date">
 
 <input type="time" id="time">
 
-<select id="vehicleModel">
-<option>Select Vehicle Model</option>
+<select id="vehicle">
+<option>Select Vehicle</option>
 <option>Desire</option>
 <option>Ertiga</option>
 <option>Innova</option>
-<option>Cryta</option>
-</select>
-
-<select id="vehicleType">
-<option>Select Vehicle Type</option>
-<option>Sedan</option>
-<option>SUV</option>
-<option>Hatchback</option>
+<option>Creta</option>
 </select>
 
 <button onclick="openPopup()">
-WhatsApp Booking
+Send WhatsApp
 </button>
+
+<div class="footer">
+
+<b>Contact Us</b><br>
+8651568297<br><br>
+
+<b>Address</b><br>
+Sakchi, Jamshedpur
+
+</div>
 
 </div>
 
@@ -139,20 +220,28 @@ WhatsApp Booking
 
 <div class="popup-content">
 
-<h2>Booking Confirmation</h2>
+<h2>Review Booking</h2>
 
-<input type="text" id="c_name">
-<input type="text" id="c_mobile">
-<input type="text" id="c_service">
-<input type="text" id="c_pickup">
-<input type="text" id="c_drop">
-<input type="text" id="c_date">
-<input type="text" id="c_time">
-<input type="text" id="c_model">
-<input type="text" id="c_type">
+<input type="text" id="r_name">
+
+<input type="text" id="r_mobile">
+
+<input type="text" id="r_address">
+
+<input type="text" id="r_service">
+
+<input type="text" id="r_pickup">
+
+<input type="text" id="r_drop">
+
+<input type="text" id="r_date">
+
+<input type="text" id="r_time">
+
+<input type="text" id="r_vehicle">
 
 <button onclick="sendWhatsApp()">
-Submit & Open WhatsApp
+Submit Booking
 </button>
 
 </div>
@@ -161,70 +250,162 @@ Submit & Open WhatsApp
 
 <script>
 
+let savedDrops = JSON.parse(localStorage.getItem("dropSuggestions")) || [];
+
+function showSuggestions(){
+
+let box = document.getElementById("suggestions");
+
+box.innerHTML = "";
+
+savedDrops.forEach(place=>{
+
+box.innerHTML +=
+`<div class="suggestion-chip"
+onclick="selectDrop('${place}')">
+${place}
+</div>`;
+
+});
+
+}
+
+showSuggestions();
+
+function selectDrop(place){
+document.getElementById("drop").value = place;
+}
+
+function loadCustomerData(){
+
+let mobile =
+document.getElementById("mobile").value;
+
+let data =
+JSON.parse(localStorage.getItem(mobile));
+
+if(data){
+
+document.getElementById("name").value =
+data.name;
+
+document.getElementById("address").value =
+data.address;
+
+}
+
+}
+
 function openPopup(){
 
-document.getElementById('popup').style.display='flex';
+document.getElementById("popup").style.display="flex";
 
-document.getElementById('c_name').value =
-document.getElementById('name').value;
+document.getElementById("r_name").value =
+document.getElementById("name").value;
 
-document.getElementById('c_mobile').value =
-document.getElementById('mobile').value;
+document.getElementById("r_mobile").value =
+document.getElementById("mobile").value;
 
-document.getElementById('c_service').value =
-document.getElementById('service').value;
+document.getElementById("r_address").value =
+document.getElementById("address").value;
 
-document.getElementById('c_pickup').value =
-document.getElementById('pickup').value;
+document.getElementById("r_service").value =
+document.getElementById("service").value;
 
-document.getElementById('c_drop').value =
-document.getElementById('drop').value;
+document.getElementById("r_pickup").value =
+document.getElementById("pickup").value;
 
-document.getElementById('c_date').value =
-document.getElementById('date').value;
+document.getElementById("r_drop").value =
+document.getElementById("drop").value;
 
-document.getElementById('c_time').value =
-document.getElementById('time').value;
+document.getElementById("r_date").value =
+document.getElementById("date").value;
 
-document.getElementById('c_model').value =
-document.getElementById('vehicleModel').value;
+document.getElementById("r_time").value =
+document.getElementById("time").value;
 
-document.getElementById('c_type').value =
-document.getElementById('vehicleType').value;
+document.getElementById("r_vehicle").value =
+document.getElementById("vehicle").value;
 
 }
 
 function sendWhatsApp(){
 
-let name=document.getElementById('c_name').value;
-let mobile=document.getElementById('c_mobile').value;
-let service=document.getElementById('c_service').value;
-let pickup=document.getElementById('c_pickup').value;
-let drop=document.getElementById('c_drop').value;
-let date=document.getElementById('c_date').value;
-let time=document.getElementById('c_time').value;
-let model=document.getElementById('c_model').value;
-let type=document.getElementById('c_type').value;
+let name =
+document.getElementById("r_name").value;
+
+let mobile =
+document.getElementById("r_mobile").value;
+
+let address =
+document.getElementById("r_address").value;
+
+let service =
+document.getElementById("r_service").value;
+
+let pickup =
+document.getElementById("r_pickup").value;
+
+let drop =
+document.getElementById("r_drop").value;
+
+let date =
+document.getElementById("r_date").value;
+
+let time =
+document.getElementById("r_time").value;
+
+let vehicle =
+document.getElementById("r_vehicle").value;
+
+localStorage.setItem(mobile,
+JSON.stringify({
+name:name,
+address:address
+}));
+
+if(!savedDrops.includes(drop)){
+savedDrops.push(drop);
+localStorage.setItem(
+"dropSuggestions",
+JSON.stringify(savedDrops)
+);
+}
 
 let message =
-`Rishi Tour and Travels Booking Confirmation
+`New Booking Request
 
 Name: ${name}
 Mobile: ${mobile}
+Address: ${address}
 Service: ${service}
 Pickup: ${pickup}
 Drop: ${drop}
 Date: ${date}
 Time: ${time}
-Vehicle Model: ${model}
-Vehicle Type: ${type}
-
-Thank You For Booking With Us`;
+Vehicle: ${vehicle}`;
 
 let url =
-`https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
+`https://wa.me/918651568297?text=${encodeURIComponent(message)}`;
 
 window.open(url,'_blank');
+
+}
+
+function adminLogin(){
+
+let password =
+prompt("Enter Admin Password");
+
+if(password=="5007"){
+
+window.location.href="/admin";
+
+}else{
+
+alert("Wrong Password");
+
+}
 
 }
 
