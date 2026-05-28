@@ -1,142 +1,242 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Rishi Tour and Travels</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
 padding:0;
-font-family:Arial,sans-serif;
-background:#f4f4f4;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef3ff;
+min-height:100vh;
 }
 
 .container{
 max-width:500px;
 margin:auto;
-background:white;
-min-height:100vh;
 padding:20px;
-box-sizing:border-box;
+}
+
+.top{
+background:linear-gradient(135deg,#003566,#00509d);
+padding:30px 20px;
+border-radius:0 0 35px 35px;
+color:white;
 position:relative;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.logo{
+font-size:34px;
+font-weight:700;
+text-align:center;
+line-height:42px;
+}
+
+.subtitle{
+text-align:center;
+margin-top:10px;
+font-size:14px;
+opacity:0.9;
 }
 
 .admin-btn{
 position:absolute;
-top:15px;
-right:15px;
-background:#0a4d8c;
-color:white;
-padding:10px 14px;
-border-radius:10px;
-font-size:14px;
+top:20px;
+right:20px;
+background:white;
+color:#003566;
+border:none;
+padding:10px 16px;
+border-radius:15px;
+font-weight:600;
 cursor:pointer;
-}
-
-.logo{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-color:#0a4d8c;
-margin-top:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 .chips{
 display:flex;
 flex-wrap:wrap;
-gap:8px;
+gap:10px;
 justify-content:center;
-margin:20px 0;
+margin-top:22px;
 }
 
 .chip{
-background:#e8f0fe;
-padding:8px 12px;
-border-radius:20px;
+background:rgba(255,255,255,0.18);
+backdrop-filter:blur(10px);
+padding:10px 14px;
+border-radius:50px;
 font-size:12px;
-font-weight:bold;
-color:#0a4d8c;
+font-weight:500;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.form-card{
+background:white;
+margin-top:-20px;
+padding:22px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .title{
+font-size:28px;
+font-weight:700;
 text-align:center;
-font-size:22px;
-font-weight:bold;
-margin-bottom:15px;
+margin-bottom:25px;
+color:#003566;
+}
+
+.input-box{
+margin-bottom:18px;
 }
 
 input,select{
 width:100%;
-padding:14px;
-margin-top:12px;
-border-radius:12px;
-border:1px solid #ccc;
-font-size:16px;
-box-sizing:border-box;
-}
-
-button{
-width:100%;
-padding:15px;
-margin-top:20px;
+padding:16px;
 border:none;
-border-radius:12px;
-background:#25D366;
-color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
+border-radius:18px;
+background:#f3f6ff;
+font-size:15px;
+outline:none;
+transition:0.3s;
 }
 
-.suggestions{
+input:focus,select:focus{
+background:white;
+border:2px solid #00509d;
+box-shadow:0 0 10px rgba(0,80,157,0.2);
+}
+
+.suggestion{
 display:flex;
+gap:10px;
 flex-wrap:wrap;
-gap:8px;
 margin-top:10px;
 }
 
-.suggestion-chip{
-background:#f1f1f1;
-padding:8px 12px;
-border-radius:20px;
+.suggestion span{
+background:#edf2ff;
+padding:10px 14px;
+border-radius:50px;
 font-size:13px;
 cursor:pointer;
+font-weight:500;
+}
+
+.whatsapp-btn{
+width:100%;
+padding:18px;
+background:linear-gradient(135deg,#00b712,#009d0f);
+color:white;
+border:none;
+border-radius:18px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+margin-top:10px;
+box-shadow:0 8px 20px rgba(0,183,18,0.3);
+}
+
+.bottom{
+margin-top:25px;
+text-align:center;
+padding:20px;
+color:#444;
+font-size:14px;
 }
 
 .popup{
-display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.6);
+display:none;
 justify-content:center;
 align-items:center;
-padding:10px;
-box-sizing:border-box;
+padding:20px;
 z-index:1000;
 }
 
-.popup-content{
+.popup-box{
 background:white;
-padding:20px;
-border-radius:15px;
 width:100%;
-max-width:400px;
+max-width:420px;
+padding:22px;
+border-radius:25px;
 max-height:90vh;
 overflow:auto;
+animation:pop 0.3s ease;
 }
 
-.footer{
-margin-top:30px;
+@keyframes pop{
+from{
+transform:scale(0.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.popup-title{
+font-size:24px;
+font-weight:700;
+margin-bottom:20px;
 text-align:center;
-line-height:1.8;
-color:#555;
+color:#003566;
+}
+
+.review{
+background:#f3f6ff;
+padding:14px;
+border-radius:16px;
+margin-bottom:12px;
+font-size:14px;
+line-height:24px;
+}
+
+.popup-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.edit-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:15px;
+background:#dbe7ff;
+font-weight:600;
+cursor:pointer;
+}
+
+.submit-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:15px;
+background:#00b712;
+color:white;
+font-weight:700;
+cursor:pointer;
 }
 
 </style>
@@ -144,33 +244,48 @@ color:#555;
 
 <body>
 
-<div class="container">
+<div class="top">
 
-<div class="admin-btn" onclick="adminLogin()">
-Admin Login
-</div>
+<button class="admin-btn" onclick="adminLogin()">Admin</button>
 
 <div class="logo">
 Rishi Tour and Travels
 </div>
 
-<div class="chips">
-<div class="chip">24/7 365 Days Service</div>
-<div class="chip">Professional Drivers</div>
-<div class="chip">Well Maintained Cars</div>
-<div class="chip">Reliable Fair Charge</div>
+<div class="subtitle">
+Premium Cab Booking Service
 </div>
+
+<div class="chips">
+<div class="chip">24/7 Service</div>
+<div class="chip">Professional Drivers</div>
+<div class="chip">New Cars</div>
+<div class="chip">Affordable Fare</div>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="form-card">
 
 <div class="title">
-Customer Booking Form
+Customer Booking
 </div>
 
+<div class="input-box">
 <input type="text" id="name" placeholder="Customer Name">
+</div>
 
-<input type="tel" id="mobile" placeholder="Mobile Number" onkeyup="loadCustomerData()">
+<div class="input-box">
+<input type="number" id="mobile" placeholder="Mobile Number">
+</div>
 
+<div class="input-box">
 <input type="text" id="address" placeholder="Address">
+</div>
 
+<div class="input-box">
 <select id="service">
 <option>Select Service</option>
 <option>One Way Drop Pickup</option>
@@ -181,36 +296,52 @@ Customer Booking Form
 <option>Short Order</option>
 <option>Wedding Order</option>
 </select>
+</div>
 
+<div class="input-box">
 <input type="text" id="pickup" placeholder="Pickup Location">
+</div>
 
+<div class="input-box">
 <input type="text" id="drop" placeholder="Drop Location">
+</div>
 
-<div class="suggestions" id="suggestions"></div>
+<div class="suggestion">
+<span onclick="setDrop('Kolkata Airport')">Kolkata Airport</span>
+<span onclick="setDrop('Ranchi Airport')">Ranchi Airport</span>
+<span onclick="setDrop('Tata Station')">Tata Station</span>
+</div>
 
+<div class="input-box">
 <input type="date" id="date">
+</div>
 
+<div class="input-box">
 <input type="time" id="time">
+</div>
 
+<div class="input-box">
 <select id="vehicle">
 <option>Select Vehicle</option>
-<option>Desire</option>
+<option>Swift Dzire</option>
 <option>Ertiga</option>
 <option>Innova</option>
 <option>Creta</option>
 </select>
+</div>
 
-<button onclick="openPopup()">
-Send WhatsApp
+<button class="whatsapp-btn" onclick="openPopup()">
+Send WhatsApp Booking
 </button>
 
-<div class="footer">
+<div class="bottom">
 
-<b>Contact Us</b><br>
-8651568297<br><br>
+<b>Contact Us:</b> 8651568297
+<br><br>
 
-<b>Address</b><br>
-Sakchi, Jamshedpur
+<b>Address:</b> Sakchi Jamshedpur
+
+</div>
 
 </div>
 
@@ -218,31 +349,25 @@ Sakchi, Jamshedpur
 
 <div class="popup" id="popup">
 
-<div class="popup-content">
+<div class="popup-box">
 
-<h2>Review Booking</h2>
+<div class="popup-title">
+Booking Review
+</div>
 
-<input type="text" id="r_name">
+<div class="review" id="reviewData"></div>
 
-<input type="text" id="r_mobile">
+<div class="popup-buttons">
 
-<input type="text" id="r_address">
-
-<input type="text" id="r_service">
-
-<input type="text" id="r_pickup">
-
-<input type="text" id="r_drop">
-
-<input type="text" id="r_date">
-
-<input type="text" id="r_time">
-
-<input type="text" id="r_vehicle">
-
-<button onclick="sendWhatsApp()">
-Submit Booking
+<button class="edit-btn" onclick="closePopup()">
+Edit
 </button>
+
+<button class="submit-btn" onclick="sendWhatsApp()">
+Submit
+</button>
+
+</div>
 
 </div>
 
@@ -250,143 +375,67 @@ Submit Booking
 
 <script>
 
-let savedDrops = JSON.parse(localStorage.getItem("dropSuggestions")) || [];
-
-function showSuggestions(){
-
-let box = document.getElementById("suggestions");
-
-box.innerHTML = "";
-
-savedDrops.forEach(place=>{
-
-box.innerHTML +=
-`<div class="suggestion-chip"
-onclick="selectDrop('${place}')">
-${place}
-</div>`;
-
-});
-
-}
-
-showSuggestions();
-
-function selectDrop(place){
-document.getElementById("drop").value = place;
-}
-
-function loadCustomerData(){
-
-let mobile =
-document.getElementById("mobile").value;
-
-let data =
-JSON.parse(localStorage.getItem(mobile));
-
-if(data){
-
-document.getElementById("name").value =
-data.name;
-
-document.getElementById("address").value =
-data.address;
-
-}
-
+function setDrop(place){
+document.getElementById("drop").value=place;
 }
 
 function openPopup(){
 
+let data=`
+
+<b>Name:</b> ${document.getElementById("name").value}<br><br>
+
+<b>Mobile:</b> ${document.getElementById("mobile").value}<br><br>
+
+<b>Address:</b> ${document.getElementById("address").value}<br><br>
+
+<b>Service:</b> ${document.getElementById("service").value}<br><br>
+
+<b>Pickup:</b> ${document.getElementById("pickup").value}<br><br>
+
+<b>Drop:</b> ${document.getElementById("drop").value}<br><br>
+
+<b>Date:</b> ${document.getElementById("date").value}<br><br>
+
+<b>Time:</b> ${document.getElementById("time").value}<br><br>
+
+<b>Vehicle:</b> ${document.getElementById("vehicle").value}
+
+`;
+
+document.getElementById("reviewData").innerHTML=data;
+
 document.getElementById("popup").style.display="flex";
 
-document.getElementById("r_name").value =
-document.getElementById("name").value;
+}
 
-document.getElementById("r_mobile").value =
-document.getElementById("mobile").value;
-
-document.getElementById("r_address").value =
-document.getElementById("address").value;
-
-document.getElementById("r_service").value =
-document.getElementById("service").value;
-
-document.getElementById("r_pickup").value =
-document.getElementById("pickup").value;
-
-document.getElementById("r_drop").value =
-document.getElementById("drop").value;
-
-document.getElementById("r_date").value =
-document.getElementById("date").value;
-
-document.getElementById("r_time").value =
-document.getElementById("time").value;
-
-document.getElementById("r_vehicle").value =
-document.getElementById("vehicle").value;
-
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 function sendWhatsApp(){
 
-let name =
-document.getElementById("r_name").value;
+let message = `🚖 *Rishi Tour and Travels Booking*
 
-let mobile =
-document.getElementById("r_mobile").value;
+Name: ${document.getElementById("name").value}
 
-let address =
-document.getElementById("r_address").value;
+Mobile: ${document.getElementById("mobile").value}
 
-let service =
-document.getElementById("r_service").value;
+Address: ${document.getElementById("address").value}
 
-let pickup =
-document.getElementById("r_pickup").value;
+Service: ${document.getElementById("service").value}
 
-let drop =
-document.getElementById("r_drop").value;
+Pickup: ${document.getElementById("pickup").value}
 
-let date =
-document.getElementById("r_date").value;
+Drop: ${document.getElementById("drop").value}
 
-let time =
-document.getElementById("r_time").value;
+Date: ${document.getElementById("date").value}
 
-let vehicle =
-document.getElementById("r_vehicle").value;
+Time: ${document.getElementById("time").value}
 
-localStorage.setItem(mobile,
-JSON.stringify({
-name:name,
-address:address
-}));
+Vehicle: ${document.getElementById("vehicle").value}`;
 
-if(!savedDrops.includes(drop)){
-savedDrops.push(drop);
-localStorage.setItem(
-"dropSuggestions",
-JSON.stringify(savedDrops)
-);
-}
-
-let message =
-`New Booking Request
-
-Name: ${name}
-Mobile: ${mobile}
-Address: ${address}
-Service: ${service}
-Pickup: ${pickup}
-Drop: ${drop}
-Date: ${date}
-Time: ${time}
-Vehicle: ${vehicle}`;
-
-let url =
-`https://wa.me/918651568297?text=${encodeURIComponent(message)}`;
+let url = `https://wa.me/918651568297?text=${encodeURIComponent(message)}`;
 
 window.open(url,'_blank');
 
@@ -394,12 +443,11 @@ window.open(url,'_blank');
 
 function adminLogin(){
 
-let password =
-prompt("Enter Admin Password");
+let password = prompt("Enter Admin Password");
 
 if(password=="5007"){
 
-window.location.href="/admin";
+window.location.href="admin/index.html";
 
 }else{
 
@@ -413,4 +461,3 @@ alert("Wrong Password");
 
 </body>
 </html>
-```
