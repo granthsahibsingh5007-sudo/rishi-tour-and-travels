@@ -1,7 +1,9 @@
-index.html
-├── css
+
+├── index.html
+├── css/
 │   └── style.css
-├── js
-│   ├── firebase-config.js
+├── js/
 │   └── booking.js
-└── assets
+├── assets/   (optional)
+│   └── images
+└── README.md
