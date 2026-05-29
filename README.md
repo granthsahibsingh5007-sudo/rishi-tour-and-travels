@@ -1,1 +1,0 @@
-# rishi-tour-and-travels
