@@ -17,6 +17,33 @@
   918651568297
   
   <button>Book Now</button>
+  document.querySelector("button").addEventListener("click", function () {
+
+    let name = document.querySelector('input[placeholder="Customer Name"]').value;
+    let mobile = document.querySelector('input[placeholder="Mobile Number"]').value;
+    let pickup = document.querySelector('input[placeholder="Pickup Location"]').value;
+    let drop = document.querySelector('input[placeholder="Drop Location"]').value;
+
+    if(name === "" || mobile === "" || pickup === "" || drop === ""){
+        alert("Please fill all details");
+        return;
+    }
+
+    let message =
+`🚖 Rishi Tours & Travels Booking
+
+👤 Name: ${name}
+📞 Mobile: ${mobile}
+📍 Pickup: ${pickup}
+📍 Drop: ${drop}`;
+
+    let whatsappNumber = "917991148146";
+
+    let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+
+});
 
     <script src="js/booking.js"></script>
 </body>
