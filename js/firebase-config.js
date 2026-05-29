@@ -1,19 +1,35 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import {
-  getFirestore
-} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+document.getElementById("bookingForm").addEventListener("submit", function(e){
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC4LNqQ0PZvsiPLnLMJjb_UYVoBjrozZ0s",
-  authDomain: "rishi-tour-and-travels-4d106.firebaseapp.com",
-  projectId: "rishi-tour-and-travels-4d106",
-  storageBucket: "rishi-tour-and-travels-4d106.firebasestorage.app",
-  messagingSenderId: "259915637261",
-  appId: "1:259915637261:web:4c9377b25fd849c39cab44",
-  measurementId: "G-9BXQE234F5"
-};
+e.preventDefault();
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const name = document.getElementById("customerName").value;
+const phone = document.getElementById("customerPhone").value;
+const cabType = document.getElementById("cabType").value;
+const serviceType = document.getElementById("serviceType").value;
+const date = document.getElementById("journeyDate").value;
+const time = document.getElementById("journeyTime").value;
+const pickup = document.getElementById("pickup").value;
+const drop = document.getElementById("drop").value;
 
-export { db };
+const msg = `🚖 New Booking Request
+
+Customer Name: ${name}
+Mobile: ${phone}
+
+Cab Type: ${cabType}
+Service: ${serviceType}
+
+Journey Date: ${date}
+Journey Time: ${time}
+
+Pickup: ${pickup}
+Drop: ${drop}
+
+Rishi Tours & Travels`;
+
+window.open(
+`https://wa.me/918651568297?text=${encodeURIComponent(msg)}`,
+"_blank"
+);
+
+});
