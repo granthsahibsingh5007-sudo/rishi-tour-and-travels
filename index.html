@@ -1,142 +1,141 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishi Tours & Travels</title>
 
-<title>
-Rishi Tours & Travels
-</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-rel="stylesheet">
+body{
+background:linear-gradient(135deg,#ffffff,#dbeafe);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
 
-<link
-rel="stylesheet"
-href="css/style.css">
+.container{
+width:100%;
+max-width:900px;
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
 
+.logo{
+text-align:center;
+margin-bottom:25px;
+}
+
+.logo h1{
+color:#0f172a;
+font-size:38px;
+}
+
+.logo p{
+color:#2563eb;
+font-size:18px;
+margin-top:5px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+input,select{
+width:100%;
+padding:15px;
+border:1px solid #cbd5e1;
+border-radius:12px;
+font-size:16px;
+}
+
+input:focus,
+select:focus{
+outline:none;
+border-color:#2563eb;
+}
+
+.btn{
+width:100%;
+padding:16px;
+margin-top:20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#1d4ed8;
+}
+
+@media(max-width:768px){
+.form-grid{
+grid-template-columns:1fr;
+}
+.logo h1{
+font-size:30px;
+}
+}
+</style>
 </head>
 
 <body>
 
-<section class="hero">
-
-<div class="overlay">
-
-<h1>
-Rishi Tours & Travels
-</h1>
-
-<p>
-Luxury Cab Booking
-</p>
-
-</div>
-
-</section>
-
 <div class="container">
 
-<div class="form-box">
+<div class="logo">
+<h1>Rishi Tours & Travels</h1>
+<p>Luxury Cab Booking Service - Jamshedpur</p>
+</div>
 
-<form id="bookingForm">
+<div class="form-grid">
 
-<div class="grid">
+<input type="text" id="name" placeholder="Customer Name">
 
-<input
-id="customerName"
-placeholder="Customer Name"
-required>
+<input type="tel" id="mobile" placeholder="Mobile Number">
 
-<input
-id="customerPhone"
-placeholder="Mobile Number"
-required>
-
-<select id="cabType">
-
-<option>
-Sedan
-</option>
-
-<option>
-SUV
-</option>
-
-<option>
-Innova
-</option>
-
-<option>
-Innova Crysta
-</option>
-
-<option>
-Tempo Traveller
-</option>
-
+<select id="car">
+<option>Sedan</option>
+<option>SUV</option>
+<option>Innova Crysta</option>
+<option>Luxury Car</option>
 </select>
 
-<select id="serviceType">
-
-<option>
-One Way Drop
-</option>
-
-<option>
-Pickup & Drop
-</option>
-
-<option>
-Airport Transfer
-</option>
-
-<option>
-Outstation
-</option>
-
-<option>
-Wedding Purpose
-</option>
-
+<select id="trip">
+<option>One Way Drop</option>
+<option>Round Trip</option>
+<option>Airport Transfer</option>
 </select>
 
-<input
-type="date"
-id="journeyDate"
-required>
+<input type="text" id="pickup" placeholder="Pickup Location">
 
-<input
-type="time"
-id="journeyTime"
-required>
-
-<input
-id="pickup"
-placeholder="Pickup Location"
-required>
-
-<input
-id="drop"
-placeholder="Drop Location"
-required>
+<input type="text" id="drop" placeholder="Drop Location">
 
 </div>
 
-<button type="submit">
-
+<button class="btn" id="bookBtn">
 BOOK NOW
-
 </button>
 
-</form>
-
 </div>
 
-</div>
+<script src="js/booking.js"></script>
 
 </body>
-
 </html>
-
-<script src="./js/booking.js"></script>
