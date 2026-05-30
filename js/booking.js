@@ -1,37 +1,54 @@
 document.getElementById("bookBtn").addEventListener("click", function () {
 
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let car = document.getElementById("car").value;
-let trip = document.getElementById("trip").value;
-let pickup = document.getElementById("pickup").value;
-let drop = document.getElementById("drop").value;
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+    const vehicle = document.getElementById("vehicle").value;
+    const service = document.getElementById("service").value;
+    const pickup = document.getElementById("pickup").value;
+    const drop = document.getElementById("drop").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
 
-if(
-name === "" ||
-mobile === "" ||
-pickup === "" ||
-drop === ""
-){
-alert("Please fill all details");
-return;
-}
+    if (
+        !name ||
+        !mobile ||
+        !pickup ||
+        !drop ||
+        !date ||
+        !time
+    ) {
+        alert("Please fill all details");
+        return;
+    }
 
-let message =
+    const bookingId =
+        "RTT-" +
+        new Date().getFullYear() +
+        "-" +
+        Math.floor(1000 + Math.random() * 9000);
+
+    const message =
 `🚖 Rishi Tours & Travels Booking
 
+🆔 Booking ID: ${bookingId}
 👤 Name: ${name}
 📞 Mobile: ${mobile}
-🚘 Car: ${car}
-🛣 Trip: ${trip}
+🚘 Vehicle: ${vehicle}
+🛣 Service: ${service}
 📍 Pickup: ${pickup}
-📍 Drop: ${drop}`;
+📍 Drop: ${drop}
+📅 Date: ${date}
+⏰ Time: ${time}`;
 
-let whatsappNumber = "918651568297";
+    const whatsappNumber = "918651568297";
 
-let url =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const url =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-window.open(url, "_blank");
+    alert(
+        "Booking Submitted Successfully!\n\nBooking ID: " +
+        bookingId
+    );
 
+    window.open(url, "_blank");
 });
