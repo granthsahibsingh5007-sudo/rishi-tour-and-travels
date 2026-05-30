@@ -1,54 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+const SUPABASE_URL =
+"https://xgiezpajzzzhtgvrcagv.supabase.co";
 
-<title>Rishi Tours & Travels Admin</title>
+const SUPABASE_KEY =
+"sb_publishable_wdEbPt6FxlUNycufcS86kw_bglDaW5B";
 
-<link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
-<div id="loginBox" class="login-box">
-    <h1>Admin Login</h1>
+function login(){
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+const user =
+document.getElementById("username").value;
 
-    <button onclick="login()">Login</button>
-</div>
+const pass =
+document.getElementById("password").value;
 
-<div id="dashboard" style="display:none;">
+if(user === "Rishi" && pass === "5007"){
 
-    <header>
-        <h1>Rishi Tours & Travels Admin Panel</h1>
-        <button onclick="logout()">Logout</button>
-    </header>
+document.getElementById("loginBox").style.display = "none";
 
-    <table>
-        <thead>
-            <tr>
-                <th>Booking ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Cab</th>
-                <th>Trip</th>
-                <th>Pickup</th>
-                <th>Drop</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-        </thead>
+document.getElementById("dashboard").style.display = "block";
 
-        <tbody id="bookingTable">
-        </tbody>
+loadBookings();
 
-    </table>
+}else{
 
-</div>
+alert("Wrong Login");
 
-<script src="js/admin.js"></script>
+}
 
-</body>
-</html>
+}
+
+function logout(){
+
+location.reload();
+
+}
+
+async function loadBookings(){
+
+const table =
+document.getElementById("bookingTable");
+
+table.innerHTML =
+"<tr><td colspan='9'>Loading...</td></tr>";
+
+const { data, error } =
+await supabaseClient
+.from("bookings")
+.select("*")
+.order("id",{ascending:false});
+
+if(error){
+
+table.innerHTML =
+"<tr><td colspan='9'>Database Error</td></tr>";
+
+console.log(error);
+
+return;
+
+}
+
+table.innerHTML = "";
+
+data.forEach(item => {
+
+table.innerHTML += `
+<tr>
+<td>${item.booking_id || ""}</td>
+<td>${item.customer_name || ""}</td>
+<td>${item.customer_phone || ""}</td>
+<td>${item.cab_type || ""}</td>
+<td>${item.trip_type || ""}</td>
+<td>${item.pickup_location || ""}</td>
+<td>${item.drop_location || ""}</td>
+<td>${item.journey_date || ""}</td>
+<td>${item.journey_time || ""}</td>
+</tr>
+`;
+
+});
+
+}
