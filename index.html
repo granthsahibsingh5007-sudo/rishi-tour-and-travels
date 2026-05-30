@@ -1,256 +1,58 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rishi Tours & Travels | Luxury Cab Booking</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Rishi Tours & Travels Admin</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">
-        🚖 Rishi Tours & Travels
-    </div>
+<div id="loginBox" class="login-box">
+    <h1>Admin Login</h1>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#booking">Book Cab</a>
-        <a href="#fleet">Fleet</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
 
-<!-- HERO SECTION -->
-<section class="hero" id="home">
-    <div class="overlay">
-        <h1>Welcome To Rishi Tours & Travels</h1>
+    <button onclick="login()">Login</button>
+</div>
 
-        <p>
-            Premium Cab Booking Service In Sakchi,
-            Jamshedpur, Jharkhand
-        </p>
+<div id="dashboard" style="display:none;">
 
-        <a href="#booking" class="btn">
-            Book Your Cab
-        </a>
-    </div>
-</section>
+    <header>
+        <h1>Rishi Tours & Travels Admin Panel</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
 
-<!-- BOOKING FORM -->
-<section class="booking-section" id="booking">
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Cab</th>
+                <th>Trip</th>
+                <th>Pickup</th>
+                <th>Drop</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
 
-    <h2>Book Your Ride</h2>
+        <tbody id="bookingTable">
+        </tbody>
 
-    <form id="bookingForm">
+    </table>
 
-        <input
-            type="text"
-            id="name"
-            placeholder="Full Name"
-            required
-        >
-
-        <input
-            type="tel"
-            id="phone"
-            placeholder="Mobile Number"
-            required
-        >
-
-        <select id="cabModel" required>
-            <option value="">Select Cab Model</option>
-
-            <option>Dzire</option>
-            <option>Toyota Etios</option>
-            <option>Tata Tiago</option>
-            <option>Alto</option>
-            <option>Ertiga</option>
-            <option>Innova</option>
-            <option>Innova Crysta</option>
-            <option>Fortuner</option>
-
-            <option>Force Traveller 12 Seater</option>
-            <option>Force Traveller 17 Seater</option>
-            <option>Force Traveller 26 Seater</option>
-
-            <option>Bus 32 Seater</option>
-            <option>Bus 40 Seater</option>
-            <option>Bus 52 Seater</option>
-
-        </select>
-
-        <select id="tripType" required>
-
-            <option value="">
-                Select Trip Type
-            </option>
-
-            <option>One Way Drop</option>
-            <option>Round Trip</option>
-            <option>Local Movement</option>
-            <option>Short Order</option>
-            <option>Wedding Purpose</option>
-
-        </select>
-
-        <input
-            type="text"
-            id="pickup"
-            placeholder="Pickup Location"
-            required
-        >
-
-        <input
-            type="text"
-            id="drop"
-            placeholder="Drop Location"
-            required
-        >
-
-        <input
-            type="date"
-            id="date"
-            required
-        >
-
-        <input
-            type="time"
-            id="time"
-            required
-        >
-
-        <label class="payment-label">
-            UPI Payment Screenshot
-        </label>
-
-        <input
-            type="file"
-            id="paymentScreenshot"
-            accept="image/*"
-        >
-
-        <div class="upi-box">
-            <h3>UPI Payment</h3>
-
-            <p>
-                UPI ID:
-                <strong>
-                    srashmeet16-6@oksbi
-                </strong>
-            </p>
-        </div>
-
-        <button type="submit" class="book-btn">
-            Book Now
-        </button>
-
-    </form>
-
-</section>
-
-<!-- FLEET -->
-<section class="fleet" id="fleet">
-
-    <h2>Our Fleet</h2>
-
-    <div class="fleet-grid">
-
-        <div class="card">
-            <h3>Dzire</h3>
-        </div>
-
-        <div class="card">
-            <h3>Ertiga</h3>
-        </div>
-
-        <div class="card">
-            <h3>Innova</h3>
-        </div>
-
-        <div class="card">
-            <h3>Innova Crysta</h3>
-        </div>
-
-        <div class="card">
-            <h3>Fortuner</h3>
-        </div>
-
-        <div class="card">
-            <h3>Force Traveller</h3>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-
-    <h2>Contact Us</h2>
-
-    <p>
-        📍 Sakchi, Jamshedpur, Jharkhand
-    </p>
-
-    <p>
-        📞 Call:
-        <a href="tel:8651568297">
-            8651568297
-        </a>
-    </p>
-
-    <p>
-        💬 WhatsApp:
-        <a
-            href="https://wa.me/918651568297"
-            target="_blank"
-        >
-            8651568297
-        </a>
-    </p>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-
-    <p>
-        © 2026 Rishi Tours & Travels
-        | All Rights Reserved
-    </p>
-
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a
-href="https://wa.me/918651568297"
-target="_blank"
-class="whatsapp"
->
-💬
-</a>
-
-<!-- FLOATING WHATSAPP -->
-<a
-href="https://wa.me/918651568297"
-target="_blank"
-class="whatsapp"
-> 
-💬
-</a>
+</div>
 
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- Booking Script -->
-<script src="js/booking.js"></script>
+<!-- Admin JS -->
+<script src="js/admin.js"></script>
 
 </body>
 </html>
