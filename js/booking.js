@@ -1,50 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rishi Tours & Travels</title>
+document.getElementById("bookBtn").addEventListener("click", function () {
 
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let car = document.getElementById("car").value;
+let trip = document.getElementById("trip").value;
+let pickup = document.getElementById("pickup").value;
+let drop = document.getElementById("drop").value;
 
-  <h1>Welcome To Rishi Tours & Travels</h1>
-  <p>Luxury Cab Booking Service in Jamshedpur</p>
+if(
+name === "" ||
+mobile === "" ||
+pickup === "" ||
+drop === ""
+){
+alert("Please fill all details");
+return;
+}
 
-  <img src="taxi.jpeg" width="300">
-
-  918651568297
-  
-  <button>Book Now</button>
-  document.querySelector("button").addEventListener("click", function () {
-
-    let name = document.querySelector('input[placeholder="Customer Name"]').value;
-    let mobile = document.querySelector('input[placeholder="Mobile Number"]').value;
-    let pickup = document.querySelector('input[placeholder="Pickup Location"]').value;
-    let drop = document.querySelector('input[placeholder="Drop Location"]').value;
-
-    if(name === "" || mobile === "" || pickup === "" || drop === ""){
-        alert("Please fill all details");
-        return;
-    }
-
-    let message =
+let message =
 `🚖 Rishi Tours & Travels Booking
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
+🚘 Car: ${car}
+🛣 Trip: ${trip}
 📍 Pickup: ${pickup}
 📍 Drop: ${drop}`;
 
-    let whatsappNumber = "917991148146";
+let whatsappNumber = "917991148146";
 
-    let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+let url =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-    window.open(url, "_blank");
+window.open(url, "_blank");
 
 });
-
-    <script src="js/booking.js"></script>
-</body>
-</html>
