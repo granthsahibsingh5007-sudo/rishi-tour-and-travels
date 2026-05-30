@@ -1,141 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rishi Tours & Travels</title>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#ffffff,#dbeafe);
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.container{
-width:100%;
-max-width:900px;
-background:#fff;
-padding:30px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
-}
-
-.logo{
-text-align:center;
-margin-bottom:25px;
-}
-
-.logo h1{
-color:#0f172a;
-font-size:38px;
-}
-
-.logo p{
-color:#2563eb;
-font-size:18px;
-margin-top:5px;
-}
-
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-input,select{
-width:100%;
-padding:15px;
-border:1px solid #cbd5e1;
-border-radius:12px;
-font-size:16px;
-}
-
-input:focus,
-select:focus{
-outline:none;
-border-color:#2563eb;
-}
-
-.btn{
-width:100%;
-padding:16px;
-margin-top:20px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.btn:hover{
-background:#1d4ed8;
-}
-
-@media(max-width:768px){
-.form-grid{
-grid-template-columns:1fr;
-}
-.logo h1{
-font-size:30px;
-}
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="logo">
-<h1>Rishi Tours & Travels</h1>
-<p>Luxury Cab Booking Service - Jamshedpur</p>
-</div>
-
-<div class="form-grid">
-
 <input type="text" id="name" placeholder="Customer Name">
 
 <input type="tel" id="mobile" placeholder="Mobile Number">
 
-<select id="car">
-<option>Sedan</option>
-<option>SUV</option>
-<option>Innova Crysta</option>
-<option>Luxury Car</option>
+<select id="vehicle">
+    <option>Sedan</option>
+    <option>SUV (Ertiga)</option>
+    <option>SUV (Innova)</option>
+    <option>SUV (Crysta)</option>
+    <option>Force Traveller</option>
+    <option>Bus</option>
 </select>
 
-<select id="trip">
-<option>One Way Drop</option>
-<option>Round Trip</option>
-<option>Airport Transfer</option>
+<select id="service">
+    <option>One Way Drop</option>
+    <option>Round Trip</option>
+    <option>Airport Transfer</option>
+    <option>Local Cab</option>
+    <option>Outstation Tour</option>
 </select>
 
 <input type="text" id="pickup" placeholder="Pickup Location">
 
 <input type="text" id="drop" placeholder="Drop Location">
 
-</div>
+<input type="date" id="date">
 
-<button class="btn" id="bookBtn">
-BOOK NOW
+<input type="time" id="time">
+
+<button id="bookBtn">
+    BOOK NOW
 </button>
-
-</div>
-
-<script src="js/booking.js"></script>
-
-</body>
-</html>
