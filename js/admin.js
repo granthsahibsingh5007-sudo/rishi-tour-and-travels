@@ -1,3 +1,15 @@
+const supabaseUrl =
+"https://xgiezpajzzzhtgvrcagv.supabase.co";
+
+const supabaseKey =
+"sb_publishable_wdEbPt6FxlUNycufcS86kw_bglDaW5B";
+
+const supabase =
+window.supabase.createClient(
+supabaseUrl,
+supabaseKey
+);
+
 function login(){
 
 const user =
@@ -25,29 +37,37 @@ function logout(){
 location.reload();
 }
 
-function loadBookings(){
-
-const bookings =
-JSON.parse(localStorage.getItem("bookings")) || [];
+async function loadBookings(){
 
 const table =
 document.getElementById("bookingTable");
 
-table.innerHTML="";
+table.innerHTML = "";
 
-bookings.forEach(item=>{
+const { data, error } =
+await supabase
+.from("bookings")
+.select("*")
+.order("id",{ascending:false});
+
+if(error){
+console.log(error);
+return;
+}
+
+data.forEach(item=>{
 
 table.innerHTML += `
 <tr>
-<td>${item.bookingId}</td>
-<td>${item.name}</td>
-<td>${item.mobile}</td>
-<td>${item.vehicle}</td>
-<td>${item.service}</td>
-<td>${item.pickup}</td>
-<td>${item.drop}</td>
-<td>${item.date}</td>
-<td>${item.time}</td>
+<td>${item.booking_id || ""}</td>
+<td>${item.name || ""}</td>
+<td>${item.phone || ""}</td>
+<td>${item.cab_model || ""}</td>
+<td>${item.trip_type || ""}</td>
+<td>${item.pickup || ""}</td>
+<td>${item.drop_location || ""}</td>
+<td>${item.journey_date || ""}</td>
+<td>${item.journey_time || ""}</td>
 </tr>
 `;
 
