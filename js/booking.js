@@ -10,8 +10,7 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
-document
-.getElementById("bookingForm")
+document.getElementById("bookingForm")
 .addEventListener("submit", async function(e){
 
 e.preventDefault();
@@ -99,7 +98,7 @@ ${date}
 ${time}`;
 
 const url =
-https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)};
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 alert(
 "Booking Saved Successfully!\nBooking ID: " +
