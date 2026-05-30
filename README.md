@@ -1,12 +1,12 @@
-Rishi-Tours-Travels
+Rishi-Tours-Travels/
 │
 ├── index.html
+├── admin.html
 │
-├── css
-│   └── style.css
+├── css/
+│   ├── style.css
+│   └── admin.css
 │
-├── js
-│   └── booking.js
-│
-└── assets
-    └── hero.jpg
+└── js/
+    ├── booking.js
+    └── admin.js
