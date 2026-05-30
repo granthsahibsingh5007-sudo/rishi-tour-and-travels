@@ -1,9 +1,13 @@
-
+rishi-tour-and-travels
+│
 ├── index.html
-├── css/
+│
+├── css
 │   └── style.css
-├── js/
+│
+├── js
 │   └── booking.js
-├── assets/   (optional)
-│   └── images
-└── README.md
+│
+└── assets
+    ├── logo.png
+    └── taxi-banner.jpg
