@@ -1,44 +1,75 @@
-document.getElementById("bookingForm").addEventListener("submit", async function(e){
+const SUPABASE_URL =
+"https://xgiezpajzzzhtgvrcagv.supabase.co";
 
-    e.preventDefault();
+const SUPABASE_KEY =
+"sb_publishable_wdEbPt6FxlUNycufcS86kw_bglDaW5B";
 
-    const bookingId =
-        "RTT" + Math.floor(1000 + Math.random() * 9000);
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const cabModel = document.getElementById("cabModel").value;
-    const tripType = document.getElementById("tripType").value;
-    const pickup = document.getElementById("pickup").value;
-    const drop = document.getElementById("drop").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
+document
+.getElementById("bookingForm")
+.addEventListener("submit", async function(e){
 
-    const { error } = await supabaseClient
-      .from("bookings")
-      .insert([
-        {
-          booking_id: bookingId,
-          customer_name: name,
-          customer_phone: phone,
-          cab_model: cabModel,
-          trip_type: tripType,
-          pickup_location: pickup,
-          drop_location: drop,
-          journey_date: date,
-          journey_time: time
-        }
-      ]);
+e.preventDefault();
 
-    if (error) {
-        alert("Database Save Failed");
-        console.log(error);
-        return;
-    }
+const bookingId =
+"RTT" + Math.floor(1000 + Math.random() * 9000);
 
-    const whatsappNumber = "918651568297";
+const name =
+document.getElementById("name").value;
 
-    const message =
+const phone =
+document.getElementById("phone").value;
+
+const cabModel =
+document.getElementById("cabModel").value;
+
+const tripType =
+document.getElementById("tripType").value;
+
+const pickup =
+document.getElementById("pickup").value;
+
+const drop =
+document.getElementById("drop").value;
+
+const date =
+document.getElementById("date").value;
+
+const time =
+document.getElementById("time").value;
+
+const { error } =
+await supabaseClient
+.from("bookings")
+.insert([
+{
+booking_id: bookingId,
+customer_name: name,
+customer_phone: phone,
+cab_type: cabModel,
+trip_type: tripType,
+pickup_location: pickup,
+drop_location: drop,
+journey_date: date,
+journey_time: time
+}
+]);
+
+if(error){
+console.log(error);
+alert("Database Save Failed");
+return;
+}
+
+const whatsappNumber =
+"918651568297";
+
+const message =
 `🚖 Rishi Tours & Travels
 
 Booking ID: ${bookingId}
@@ -67,12 +98,16 @@ ${date}
 ⏰ Time:
 ${time}`;
 
-    const url =
-      https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)};
+const url =
+https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)};
 
-    alert("Booking Saved Successfully");
+alert(
+"Booking Saved Successfully!\nBooking ID: " +
+bookingId
+);
 
-    window.open(url, "_blank");
+window.open(url,"_blank");
 
-    document.getElementById("bookingForm").reset();
+document.getElementById("bookingForm").reset();
+
 });
