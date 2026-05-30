@@ -27,7 +27,7 @@ let message =
 📍 Pickup: ${pickup}
 📍 Drop: ${drop}`;
 
-let whatsappNumber = "917991148146";
+let whatsappNumber = "918651568297";
 
 let url =
 `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
