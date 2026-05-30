@@ -1,4 +1,4 @@
-rishi-tour-and-travels
+Rishi-Tours-Travels
 │
 ├── index.html
 │
@@ -9,5 +9,4 @@ rishi-tour-and-travels
 │   └── booking.js
 │
 └── assets
-    ├── logo.png
-    └── taxi-banner.jpg
+    └── hero.jpg
