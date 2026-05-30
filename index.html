@@ -4,55 +4,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rishi Tours & Travels Admin</title>
+<title>Rishi Tours & Travels | Cab Booking</title>
 
-<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0b0014;
+color:white;
+}
+
+.hero{
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("hero.jpg") center/cover;
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.booking{
+max-width:700px;
+margin:30px auto;
+padding:25px;
+background:#160022;
+border-radius:20px;
+}
+
+.booking h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input,
+select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#7b2ff7,#ff0080);
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+</style>
 </head>
+
 <body>
 
-<div id="loginBox" class="login-box">
-    <h1>Admin Login</h1>
+<section class="hero">
+<h1>Rishi Tours & Travels</h1>
+<p>Safe • Comfortable • Reliable Cab Service</p>
+</section>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+<section class="booking">
 
-    <button onclick="login()">Login</button>
+<h2>Cab Booking Form</h2>
+
+<form id="bookingForm">
+
+<input
+type="text"
+id="name"
+placeholder="Customer Name"
+required>
+
+<input
+type="tel"
+id="phone"
+placeholder="Mobile Number"
+required>
+
+<select id="cabModel" required>
+<option value="">Select Cab</option>
+<option>Swift Dzire</option>
+<option>Ertiga</option>
+<option>Innova</option>
+<option>Innova Crysta</option>
+</select>
+
+<select id="tripType" required>
+<option value="">Trip Type</option>
+<option>One Way</option>
+<option>Round Trip</option>
+<option>Local</option>
+<option>Airport</option>
+</select>
+
+<input
+type="text"
+id="pickup"
+placeholder="Pickup Location"
+required>
+
+<input
+type="text"
+id="drop"
+placeholder="Drop Location"
+required>
+
+<input
+type="date"
+id="date"
+required>
+
+<input
+type="time"
+id="time"
+required>
+
+<button type="submit">
+Book Now
+</button>
+
+</form>
+
+</section>
+
+<div class="footer">
+© 2026 Rishi Tours & Travels
 </div>
 
-<div id="dashboard" style="display:none;">
-
-    <header>
-        <h1>Rishi Tours & Travels Admin Panel</h1>
-        <button onclick="logout()">Logout</button>
-    </header>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Booking ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Cab</th>
-                <th>Trip</th>
-                <th>Pickup</th>
-                <th>Drop</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-        </thead>
-
-        <tbody id="bookingTable">
-        </tbody>
-
-    </table>
-
-</div>
-
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- Admin JS -->
-<script src="js/admin.js"></script>
+<script src="js/booking.js"></script>
 
 </body>
 </html>
