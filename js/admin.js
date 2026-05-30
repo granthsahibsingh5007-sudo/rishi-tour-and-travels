@@ -18,23 +18,26 @@ document.getElementById("username").value;
 const pass =
 document.getElementById("password").value;
 
-if(user==="Rishi" && pass==="5007"){
+if(user === "Rishi" && pass === "5007"){
 
-document.getElementById("loginBox").style.display="none";
+document.getElementById("loginBox").style.display = "none";
 
-document.getElementById("dashboard").style.display="block";
+document.getElementById("dashboard").style.display = "block";
 
 loadBookings();
 
-}
-else{
+}else{
+
 alert("Wrong Login");
+
 }
 
 }
 
 function logout(){
+
 location.reload();
+
 }
 
 async function loadBookings(){
@@ -42,7 +45,8 @@ async function loadBookings(){
 const table =
 document.getElementById("bookingTable");
 
-table.innerHTML = "";
+table.innerHTML =
+"<tr><td colspan='9'>Loading...</td></tr>";
 
 const { data, error } =
 await supabase
@@ -51,20 +55,28 @@ await supabase
 .order("id",{ascending:false});
 
 if(error){
+
 console.log(error);
+
+table.innerHTML =
+"<tr><td colspan='9'>Database Error</td></tr>";
+
 return;
+
 }
 
-data.forEach(item=>{
+table.innerHTML = "";
+
+data.forEach(item => {
 
 table.innerHTML += `
 <tr>
 <td>${item.booking_id || ""}</td>
-<td>${item.name || ""}</td>
-<td>${item.phone || ""}</td>
-<td>${item.cab_model || ""}</td>
+<td>${item.customer_name || ""}</td>
+<td>${item.customer_phone || ""}</td>
+<td>${item.cab_type || ""}</td>
 <td>${item.trip_type || ""}</td>
-<td>${item.pickup || ""}</td>
+<td>${item.pickup_location || ""}</td>
 <td>${item.drop_location || ""}</td>
 <td>${item.journey_date || ""}</td>
 <td>${item.journey_time || ""}</td>
