@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rishi Tours & Travels Admin</title>
+
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div id="loginBox" class="login-box">
+    <h1>Admin Login</h1>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="dashboard" style="display:none;">
+
+    <header>
+        <h1>Rishi Tours & Travels Admin Panel</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Cab</th>
+                <th>Trip</th>
+                <th>Pickup</th>
+                <th>Drop</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+
+        <tbody id="bookingTable">
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>
