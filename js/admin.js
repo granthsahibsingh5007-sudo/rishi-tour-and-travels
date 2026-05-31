@@ -6,103 +6,87 @@ const supabaseKey =
 
 const supabase =
 window.supabase.createClient(
-supabaseUrl,
-supabaseKey
+  supabaseUrl,
+  supabaseKey
 );
 
 /* LOGIN */
 
-function login(){
+function login() {
 
-const user =
-document.getElementById("username").value;
+  const user =
+    document.getElementById("username").value;
 
-const pass =
-document.getElementById("password").value;
+  const pass =
+    document.getElementById("password").value;
 
-if(user==="Rishi" && pass==="5007"){
+  if (user === "Rishi" && pass === "5007") {
 
-document.getElementById(
-"loginBox"
-).style.display="none";
+    document.getElementById("loginBox").style.display = "none";
 
-document.getElementById(
-"dashboard"
-).style.display="block";
+    document.getElementById("dashboard").style.display = "block";
 
-loadBookings();
+    loadBookings();
 
-}else{
+  } else {
 
-alert(
-"Wrong Username Or Password"
-);
+    alert("Wrong Username Or Password");
+
+  }
 
 }
 
-}
+window.login = login;
 
 /* LOGOUT */
 
-function logout(){
-
-location.reload();
-
+function logout() {
+  location.reload();
 }
+
+window.logout = logout;
 
 /* LOAD BOOKINGS */
 
-async function loadBookings(){
+async function loadBookings() {
 
-const table =
-document.getElementById(
-"bookingTable"
-);
+  const table =
+    document.getElementById("bookingTable");
 
-table.innerHTML = "";
+  table.innerHTML = "";
 
-const { data, error } =
-await supabase
-.from("bookings")
-.select("*")
-.order("id",{
-ascending:false
-});
+  const { data, error } =
+    await supabase
+      .from("bookings")
+      .select("*")
+      .order("id", {
+        ascending: false
+      });
 
-if(error){
+  if (error) {
 
-console.log(error);
+    console.log(error);
 
-alert(
-"Booking Load Failed"
-);
+    alert("Booking Load Failed");
 
-return;
+    return;
 
-}
+  }
 
-data.forEach(item=>{
+  data.forEach(item => {
 
-table.innerHTML += `
+    table.innerHTML += `
 
 <tr>
 
 <td>${item.booking_id || ""}</td>
-
 <td>${item.customer_name || ""}</td>
-
 <td>${item.customer_phone || ""}</td>
-
 <td>${item.cab_type || ""}</td>
-
 <td>${item.trip_type || ""}</td>
-
 <td>${item.pickup_location || ""}</td>
-
 <td>${item.drop_location || ""}</td>
-
 <td>${item.journey_date || ""}</td>
-
 <td>${item.journey_time || ""}</td>
 
 <td>
@@ -150,67 +134,52 @@ Confirm
 
 `;
 
-});
+  });
 
 }
 
 /* CONFIRM BOOKING */
 
 async function confirmBooking(
-id,
-bookingId,
-customerName,
-customerPhone,
-pickup,
-drop,
-date,
-time,
-cabModel
-){
+  id,
+  bookingId,
+  customerName,
+  customerPhone,
+  pickup,
+  drop,
+  date,
+  time,
+  cabModel
+) {
 
-const driverName =
-document.getElementById(
-`driver_${id}`
-).value;
+  const driverName =
+    document.getElementById(`driver_${id}`).value;
 
-const driverMobile =
-document.getElementById(
-`mobile_${id}`
-).value;
+  const driverMobile =
+    document.getElementById(`mobile_${id}`).value;
 
-const cabNumber =
-document.getElementById(
-`cab_${id}`
-).value;
+  const cabNumber =
+    document.getElementById(`cab_${id}`).value;
 
-if(
-!driverName ||
-!driverMobile ||
-!cabNumber
-){
+  if (
+    !driverName ||
+    !driverMobile ||
+    !cabNumber
+  ) {
 
-alert(
-"Fill Driver Details First"
-);
+    alert("Fill Driver Details First");
+    return;
 
-return;
+  }
 
-}
+  await supabase
+    .from("bookings")
+    .update({
+      booking_status: "Confirmed"
+    })
+    .eq("id", id);
 
-/* Update Status */
-
-await supabase
-.from("bookings")
-.update({
-booking_status:"Confirmed"
-})
-.eq("id",id);
-
-/* WhatsApp Message */
-
-const message =
-
-`🚖 Rishi Tours & Travels
+  const message = `🚖 Rishi Tours & Travels
 
 Booking Confirmed ✅
 
@@ -252,16 +221,16 @@ Rishi Tours & Travels ❤️
 
 Have A Happy & Safe Journey 🚖✈️`;
 
-const phone =
-customerPhone.replace(/\D/g,'');
+  const phone =
+    customerPhone.replace(/\D/g, '');
 
-window.open(
-`https://wa.me/91${phone}?text=${encodeURIComponent(message)}`,
-"_blank"
-);
+  window.open(
+    `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
 
-alert(
-"Booking Confirmed Successfully"
-);
+  alert("Booking Confirmed Successfully");
 
 }
+
+window.confirmBooking = confirmBooking;
