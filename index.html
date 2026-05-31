@@ -4,95 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rishi Tours & Travels | Cab Booking</title>
+<title>Rishi Tours & Travels</title>
 
 <link rel="stylesheet" href="css/style.css">
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-body{
-background:#0b0014;
-color:white;
-}
-
-.hero{
-height:60vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url("hero.jpg") center/cover;
-}
-
-.hero h1{
-font-size:38px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.booking{
-max-width:700px;
-margin:30px auto;
-padding:25px;
-background:#160022;
-border-radius:20px;
-}
-
-.booking h2{
-text-align:center;
-margin-bottom:20px;
-}
-
-input,
-select{
-width:100%;
-padding:14px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-}
-
-button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-background:linear-gradient(90deg,#7b2ff7,#ff0080);
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-.footer{
-text-align:center;
-padding:20px;
-margin-top:30px;
-}
-</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
 
-<section class="hero">
-<h1>Rishi Tours & Travels</h1>
-<p>Safe • Comfortable • Reliable Cab Service</p>
+<!-- Welcome Screen -->
+<div id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-content">
+        <h1>🚖 Welcome To</h1>
+        <h2>Rishi Tours & Travels</h2>
+        <p>Luxury Cab Booking Service</p>
+
+        <button onclick="startWebsite()">
+            Enter Website
+        </button>
+    </div>
+</div>
+
+<!-- Main Website -->
+<div id="mainWebsite" style="display:none;">
+
+<header class="header">
+
+    <div class="logo">
+        🚖 Rishi Tours & Travels
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#booking">Book Cab</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+
+    <div class="hero-overlay">
+
+        <h1>
+            Premium Cab Service In
+            Jamshedpur
+        </h1>
+
+        <p>
+            Safe • Comfortable • Reliable
+        </p>
+
+        <a href="#booking" class="hero-btn">
+            Book Your Ride
+        </a>
+
+    </div>
+
 </section>
 
-<section class="booking">
+<!-- Booking Form -->
+<section id="booking" class="booking-section">
 
-<h2>Cab Booking Form</h2>
+<h2>Book Your Cab</h2>
 
 <form id="bookingForm">
 
@@ -109,19 +88,58 @@ placeholder="Mobile Number"
 required>
 
 <select id="cabModel" required>
-<option value="">Select Cab</option>
-<option>Swift Dzire</option>
+
+<option value="">
+Select Cab Model
+</option>
+
+<option>Dzire</option>
+<option>Toyota Etios</option>
+<option>Tata Tiago</option>
+<option>Alto</option>
 <option>Ertiga</option>
 <option>Innova</option>
 <option>Innova Crysta</option>
+<option>Fortuner</option>
+
+<option>
+Force Traveller 12 Seater
+</option>
+
+<option>
+Force Traveller 17 Seater
+</option>
+
+<option>
+Force Traveller 26 Seater
+</option>
+
+<option>
+Bus 32 Seater
+</option>
+
+<option>
+Bus 40 Seater
+</option>
+
+<option>
+Bus 52 Seater
+</option>
+
 </select>
 
 <select id="tripType" required>
-<option value="">Trip Type</option>
-<option>One Way</option>
+
+<option value="">
+Select Trip Type
+</option>
+
+<option>One Way Drop</option>
 <option>Round Trip</option>
-<option>Local</option>
-<option>Airport</option>
+<option>Local Movement</option>
+<option>Short Order</option>
+<option>Wedding Purpose</option>
+
 </select>
 
 <input
@@ -146,6 +164,19 @@ type="time"
 id="time"
 required>
 
+<div class="upi-box">
+
+<h3>UPI Payment</h3>
+
+<p>
+UPI ID:
+<strong>
+srashmeet16-6@oksbi
+</strong>
+</p>
+
+</div>
+
 <button type="submit">
 Book Now
 </button>
@@ -154,11 +185,81 @@ Book Now
 
 </section>
 
-<div class="footer">
-© 2026 Rishi Tours & Travels
+<!-- Services -->
+<section id="services" class="services">
+
+<h2>Our Services</h2>
+
+<div class="service-grid">
+
+<div class="card">
+🚖 One Way Drop
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div class="card">
+🔁 Round Trip
+</div>
+
+<div class="card">
+🏙️ Local Movement
+</div>
+
+<div class="card">
+💒 Wedding Purpose
+</div>
+
+<div class="card">
+🚌 Traveller & Bus
+</div>
+
+</div>
+
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+
+<h2>Contact Us</h2>
+
+<p>
+📍 Sakchi, Jamshedpur, Jharkhand
+</p>
+
+<p>
+📞 8651568297
+</p>
+
+</section>
+
+<footer>
+
+© 2026 Rishi Tours & Travels
+
+</footer>
+
+<!-- Floating WhatsApp -->
+
+<a
+href="https://wa.me/918651568297"
+class="whatsapp-btn"
+target="_blank">
+💬
+</a>
+
+</div>
+
+<script>
+function startWebsite(){
+document.getElementById(
+"welcomeScreen"
+).style.display="none";
+
+document.getElementById(
+"mainWebsite"
+).style.display="block";
+}
+</script>
+
 <script src="js/booking.js"></script>
 
 </body>
