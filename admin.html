@@ -3,50 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rishi Tours & Travels Admin</title>
 
 <link rel="stylesheet" href="css/admin.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 <body>
 
 <div id="loginBox" class="login-box">
-    <h1>Admin Login</h1>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+<h1>🚖 Admin Login</h1>
 
-    <button onclick="login()">Login</button>
+<input
+type="text"
+id="username"
+placeholder="Username">
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
 </div>
 
 <div id="dashboard" style="display:none;">
 
-    <header>
-        <h1>Rishi Tours & Travels Admin Panel</h1>
-        <button onclick="logout()">Logout</button>
-    </header>
+<header class="admin-header">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Booking ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Cab</th>
-                <th>Trip</th>
-                <th>Pickup</th>
-                <th>Drop</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-        </thead>
+<h1>
+Rishi Tours & Travels
+Admin Panel
+</h1>
 
-        <tbody id="bookingTable"></tbody>
+<button onclick="logout()">
+Logout
+</button>
 
-    </table>
+</header>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Booking ID</th>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>Cab</th>
+
+<th>Trip</th>
+
+<th>Pickup</th>
+
+<th>Drop</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Driver Name</th>
+
+<th>Driver Mobile</th>
+
+<th>Cab Number</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="bookingTable">
+
+</tbody>
+
+</table>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</div>
+
 <script src="js/admin.js"></script>
 
 </body>
