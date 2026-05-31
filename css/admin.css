@@ -1,60 +1,140 @@
-body{
+*{
 margin:0;
-font-family:Poppins,sans-serif;
-background:#0b0014;
-color:white;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
+
+body{
+background:#120018;
+color:#fff;
+padding:20px;
+}
+
+/* Login Box */
 
 .login-box{
 max-width:400px;
-margin:100px auto;
+margin:80px auto;
+background:#1a0123;
 padding:30px;
-background:#1c0828;
 border-radius:20px;
-}
-
-.login-box h1{
+box-shadow:0 0 20px rgba(255,0,90,.3);
 text-align:center;
 }
 
-input{
+.login-box h1{
+margin-bottom:20px;
+color:#ff4d6d;
+}
+
+.login-box input{
 width:100%;
 padding:14px;
-margin:10px 0;
+margin-bottom:15px;
 border:none;
 border-radius:10px;
 }
 
-button{
+.login-box button{
 width:100%;
 padding:14px;
-background:linear-gradient(90deg,#7b2ff7,#ff0080);
 border:none;
 border-radius:10px;
-color:white;
+background:#ff1744;
+color:#fff;
 font-size:16px;
 cursor:pointer;
 }
 
-header{
+/* Header */
+
+.admin-header{
 display:flex;
 justify-content:space-between;
-padding:20px;
-background:#180021;
+align-items:center;
+margin-bottom:20px;
+background:#1a0123;
+padding:15px 20px;
+border-radius:15px;
+}
+
+.admin-header h1{
+font-size:22px;
+color:#ff4d6d;
+}
+
+.admin-header button{
+background:#ff1744;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+color:#fff;
+cursor:pointer;
+}
+
+/* Table */
+
+.table-wrapper{
+overflow-x:auto;
+background:#1a0123;
+padding:15px;
+border-radius:15px;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
+min-width:1400px;
 }
 
 th{
-background:#ff0080;
+background:#8b0000;
+color:#fff;
 padding:12px;
 }
 
 td{
-padding:12px;
-border:1px solid #333;
+padding:10px;
+border-bottom:1px solid rgba(255,255,255,.1);
 text-align:center;
+}
+
+td input{
+width:120px;
+padding:8px;
+border:none;
+border-radius:8px;
+}
+
+.confirm-btn{
+background:#00c853;
+border:none;
+padding:10px 14px;
+border-radius:8px;
+color:#fff;
+cursor:pointer;
+font-weight:600;
+}
+
+.status-pending{
+color:#ff9800;
+font-weight:bold;
+}
+
+.status-confirmed{
+color:#00e676;
+font-weight:bold;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.admin-header{
+flex-direction:column;
+gap:10px;
+text-align:center;
+}
+
 }
