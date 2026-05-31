@@ -52,6 +52,8 @@ window.logout = logout;
 
 async function loadBookings(){
 
+alert("LOAD BOOKINGS RUNNING");
+    
 const table =
 document.getElementById("bookingTable");
 
