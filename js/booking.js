@@ -16,7 +16,8 @@ document.getElementById("bookingForm")
 e.preventDefault();
 
 const bookingId =
-"RTT" + Math.floor(1000 + Math.random() * 9000);
+"RTT" +
+Math.floor(1000 + Math.random() * 9000);
 
 const name =
 document.getElementById("name").value;
@@ -42,6 +43,8 @@ document.getElementById("date").value;
 const time =
 document.getElementById("time").value;
 
+/* Save To Supabase */
+
 const { error } =
 await supabaseClient
 .from("bookings")
@@ -55,34 +58,43 @@ trip_type: tripType,
 pickup_location: pickup,
 drop_location: drop,
 journey_date: date,
-journey_time: time
+journey_time: time,
+booking_status: "Pending"
 }
 ]);
 
 if(error){
+
 console.log(error);
-alert("Database Save Failed");
+
+alert(
+"Booking Save Failed"
+);
+
 return;
+
 }
 
-const whatsappNumber =
+/* Owner WhatsApp */
+
+const ownerNumber =
 "918651568297";
 
-const message =
-`🚖 Rishi Tours & Travels
+const ownerMessage =
+`🚖 NEW BOOKING
 
 Booking ID: ${bookingId}
 
-👤 Customer Name:
+👤 Name:
 ${name}
 
-📞 Mobile:
+📞 Phone:
 ${phone}
 
-🚘 Cab Model:
+🚘 Cab:
 ${cabModel}
 
-🛣️ Trip Type:
+🛣️ Trip:
 ${tripType}
 
 📍 Pickup:
@@ -97,16 +109,25 @@ ${date}
 ⏰ Time:
 ${time}`;
 
-const url =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+const ownerUrl =
+`https://wa.me/${ownerNumber}?text=${encodeURIComponent(ownerMessage)}`;
 
 alert(
-"Booking Saved Successfully!\nBooking ID: " +
-bookingId
+`Booking Created Successfully
+
+Booking ID:
+${bookingId}
+
+Our Team Will Contact You Soon.`
 );
 
-window.open(url,"_blank");
+window.open(
+ownerUrl,
+"_blank"
+);
 
-document.getElementById("bookingForm").reset();
+document
+.getElementById("bookingForm")
+.reset();
 
 });
