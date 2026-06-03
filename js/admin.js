@@ -1,3 +1,5 @@
+alert("ADMIN JS LOADED");
+
 const supabaseUrl =
 "https://xgiezpajzzzhtgvrcagv.supabase.co";
 
