@@ -186,17 +186,17 @@ async function manageBooking(bookingId) {
     await supabaseClient
     .from("bookings")
     .update({
-        driver_name: driverName,
-        driver_phone: driverPhone,
-        vehicle_number: vehicleNumber,
-        fare: fare,
-        booking_status: "Confirmed"
+  driver_name: driverName,
+  driver_number: driverPhone,
+  cab_number: vehicleNumber,
+  fare: fare    
+       booking_status: "Confirmed"
     })
     .eq("booking_id", bookingId);
 
     if (error) {
 
-        alert("Update Failed");
+        alert(JSON.stringify(error));
         console.log(error);
         return;
     }
