@@ -130,6 +130,22 @@ Manage
 WhatsApp
 </button>
 </td>
+
+<td>
+<button onclick="generateInvoice(
+'${item.booking_id}',
+'${item.customer_name}',
+'${item.customer_phone}',
+'${item.pickup_location}',
+'${item.drop_location}',
+'${item.driver_name || ""}',
+'${item.driver_phone || ""}',
+'${item.vehicle_number || ""}',
+'${item.fare || ""}'
+)">
+Invoice
+</button>
+</td>
         
             </tr>
             `;
@@ -232,3 +248,44 @@ window.open(
 }
 
 window.sendWhatsApp = sendWhatsApp;
+
+function generateInvoice(
+bookingId,
+customerName,
+customerPhone,
+pickup,
+drop,
+driverName,
+driverPhone,
+vehicleNumber,
+fare
+) {
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+doc.text("Rishi Tours & Travels", 20, 20);
+
+doc.setFontSize(12);
+
+doc.text("Booking Invoice", 20, 35);
+doc.text("Booking ID: " + bookingId, 20, 50);
+doc.text("Customer: " + customerName, 20, 60);
+doc.text("Phone: " + customerPhone, 20, 70);
+doc.text("Pickup: " + pickup, 20, 85);
+doc.text("Drop: " + drop, 20, 95);
+doc.text("Driver: " + driverName, 20, 110);
+doc.text("Driver Mobile: " + driverPhone, 20, 120);
+doc.text("Cab Number: " + vehicleNumber, 20, 130);
+doc.text("Fare: Rs. " + fare, 20, 145);
+
+doc.text("Thank You For Choosing", 20, 170);
+doc.text("Rishi Tours & Travels", 20, 180);
+
+doc.save("Invoice-" + bookingId + ".pdf");
+}
+
+window.generateInvoice = generateInvoice;
+
