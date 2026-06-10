@@ -196,7 +196,7 @@ async function manageBooking(bookingId) {
 
     if (error) {
 
-        alert(JSON.stringify(error));
+        alert("Update Failed");
         console.log(error);
         return;
     }
