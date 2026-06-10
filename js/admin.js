@@ -111,8 +111,26 @@ async function loadBookings() {
                 <td>${item.driver_name || "-"}</td>
                 <td>${item.driver_phone || "-"}</td>
                 <td>${item.vehicle_number || "-"}</td>
-                <td>Manage</td>
-                <td>WhatsApp</td>
+                <td>
+<button onclick="manageBooking('${item.booking_id}')">
+Manage
+</button>
+</td>
+
+<td>
+<button onclick="sendWhatsApp(
+'${item.customer_phone}',
+'${item.booking_id}',
+'${item.customer_name}',
+'${item.driver_name || ""}',
+'${item.driver_phone || ""}',
+'${item.vehicle_number || ""}',
+'${item.fare || ""}'
+)">
+WhatsApp
+</button>
+</td>
+        
             </tr>
             `;
         });
@@ -125,3 +143,92 @@ async function loadBookings() {
         "<tr><td colspan='14'>System Error</td></tr>";
     }
 }
+
+async function manageBooking(bookingId) {
+
+    const driverName =
+    prompt("Driver Name");
+
+    if (!driverName) return;
+
+    const driverPhone =
+    prompt("Driver Mobile");
+
+    if (!driverPhone) return;
+
+    const vehicleNumber =
+    prompt("Cab Number");
+
+    if (!vehicleNumber) return;
+
+    const fare =
+    prompt("Fare Amount");
+
+    if (!fare) return;
+
+    const { error } =
+    await supabaseClient
+    .from("bookings")
+    .update({
+        driver_name: driverName,
+        driver_phone: driverPhone,
+        vehicle_number: vehicleNumber,
+        fare: fare,
+        booking_status: "Confirmed"
+    })
+    .eq("booking_id", bookingId);
+
+    if (error) {
+
+        alert("Update Failed");
+        console.log(error);
+        return;
+    }
+
+    alert("Booking Updated Successfully");
+
+    loadBookings();
+}
+
+window.manageBooking = manageBooking;
+
+
+
+function sendWhatsApp(
+customerPhone,
+bookingId,
+customerName,
+driverName,
+driverPhone,
+vehicleNumber,
+fare
+) {
+
+const msg =
+
+`🚖 Rishi Tours & Travels
+
+Booking Confirmed ✅
+
+Booking ID: ${bookingId}
+
+Customer: ${customerName}
+
+Driver: ${driverName}
+
+Driver Mobile: ${driverPhone}
+
+Cab Number: ${vehicleNumber}
+
+Fare: ₹${fare}
+
+Thank You For Choosing
+Rishi Tours & Travels`;
+
+window.open(
+`https://wa.me/91${customerPhone}?text=${encodeURIComponent(msg)}`
+);
+
+}
+
+window.sendWhatsApp = sendWhatsApp;
