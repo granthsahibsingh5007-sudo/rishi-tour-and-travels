@@ -124,7 +124,7 @@ Manage
 '${item.customer_name}',
 '${item.driver_name || ""}',
 '${item.driver_phone || ""}',
-'${item.vehicle_number || ""}',
+'${item.cab_number || ""}',
 '${item.fare || ""}'
 )">
 WhatsApp
@@ -140,7 +140,7 @@ WhatsApp
 '${item.drop_location}',
 '${item.driver_name || ""}',
 '${item.driver_phone || ""}',
-'${item.vehicle_number || ""}',
+'${item.cab_number || ""}',
 '${item.fare || ""}'
 )">
 Invoice
@@ -189,7 +189,7 @@ async function manageBooking(bookingId) {
   driver_name: driverName,
   driver_number: driverPhone,
   cab_number: vehicleNumber,
-  fare: fare    
+  fare: fare,   
        booking_status: "Confirmed"
     })
     .eq("booking_id", bookingId);
@@ -264,6 +264,20 @@ fare
 const { jsPDF } = window.jspdf;
 
 const doc = new jsPDF();
+    doc.setFillColor(128,0,0);
+doc.rect(0,0,210,30,"F");
+
+doc.setTextColor(255,255,255);
+doc.setFontSize(22);
+doc.text("Rishi Tours & Travels",20,18);
+
+doc.setTextColor(0,0,0);
+doc.setDrawColor(128,0,0);
+doc.rect(10,40,190,150);
+
+doc.setFontSize(18);
+doc.text("BOOKING INVOICE",60,55);
+doc.line(10,65,200,65);
 
 doc.setFontSize(18);
 doc.text("Rishi Tours & Travels", 20, 20);
